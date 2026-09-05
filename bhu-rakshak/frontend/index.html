@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LandSafe AI — Landslide Early Warning Dashboard</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🏔️ LandSafe AI</h1>
+  <p>AI-Based Early Warning &amp; Landslide Risk Monitoring System — North-East India</p>
+  <div class="api-status" id="apiStatus">Checking backend connection…</div>
+</header>
+
+<main>
+  <section class="map-section">
+    <h2>Live Risk Map</h2>
+    <div id="map"></div>
+    <button id="refreshBtn">🔄 Refresh Readings</button>
+  </section>
+
+  <section class="zones-section">
+    <h2>Monitored Zones</h2>
+    <div id="zoneCards" class="zone-cards">
+      <p class="loading">Loading zones…</p>
+    </div>
+  </section>
+
+  <section class="predict-section">
+    <h2>Check Risk for Custom Readings</h2>
+    <form id="predictForm">
+      <label>Rainfall (mm) <input type="number" name="rainfall_mm" value="150" step="1" required></label>
+      <label>Slope Angle (°) <input type="number" name="slope_angle" value="40" step="1" required></label>
+      <label>Soil Moisture (%) <input type="number" name="soil_moisture_pct" value="70" step="1" required></label>
+      <label>Elevation (m) <input type="number" name="elevation_m" value="900" step="10" required></label>
+      <label>Distance to Fault (km) <input type="number" name="distance_to_fault_km" value="2" step="0.1" required></label>
+      <label>Prior Landslides <input type="number" name="prev_landslide_count" value="1" step="1" required></label>
+      <label>Vegetation Cover (%) <input type="number" name="vegetation_cover_pct" value="40" step="1" required></label>
+      <button type="submit">Calculate Risk</button>
+    </form>
+    <div id="predictResult"></div>
+  </section>
+
+  <section class="alerts-section">
+    <h2>Alert Log</h2>
+    <div id="alertLog"><p class="loading">Loading alerts…</p></div>
+  </section>
+</main>
+
+<footer>
+  <p>SIH26001 — LandSafe AI Prototype Dashboard. Alerts are simulated (no real SMS is sent).</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
