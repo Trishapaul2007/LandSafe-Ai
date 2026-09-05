@@ -1,5 +1,5 @@
 // LandSafe AI dashboard — talks to the FastAPI backend running at API_BASE.
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://landsafe-ai-backend.onrender.com";
 
 const map = L.map("map").setView([25.0, 92.5], 6);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
